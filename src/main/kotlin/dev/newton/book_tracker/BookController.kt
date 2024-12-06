@@ -10,6 +10,9 @@ class BookController(private val bookService: BookService) {
     @GetMapping
     fun getAllBooks() = bookService.findAll()
 
+    @GetMapping("/search")
+    fun getBookByTitle(@RequestParam(value="title", required = true) title: String) = bookService.findByTitle(title)
+
     @GetMapping("/{id}")
     fun getBookById(@PathVariable id: UUID) = bookService.findById(id)
 
